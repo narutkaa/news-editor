@@ -1,0 +1,36 @@
+services:
+    db:
+        image: postgres:16
+        environment:
+            POSTGRES_USER: postgres
+            POSTGRES_PASSWORD: postgres
+            POSTGRES_DB: news_editor
+        ports:
+            - "5432:5432"
+        volumes:
+            - news_editor_pgdata:/var/lib/postgresql/data
+
+    app:
+        build: .
+        depends_on:
+            - db
+        expose:
+            - "3000"
+        environment:
+            DATABASE_URL: postgresql://postgres:postgres@db:5432/news_editor
+        volumes:
+            - uploads_data:/app/data/uploads
+    
+    nginx:
+        image: nginx:alpine
+        depends_on:
+            - app
+        ports:
+            - "3000:80"
+        volumes:
+            - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
+            - uploads_data:/data/uploads:ro
+
+volumes:
+    news_editor_pgdata:
+    uploads_data:
