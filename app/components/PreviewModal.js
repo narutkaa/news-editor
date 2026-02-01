@@ -75,6 +75,7 @@ export default function PreviewModal({ article, onClose }) {
                                     width={800}
                                     height={400}
                                     className="w-full h-full object-cover"
+                                    unoptimized
                                 />
                             ) : (
                                 <ImageIcon

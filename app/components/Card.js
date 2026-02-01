@@ -29,13 +29,13 @@ export default function Card({ article }) {
             >
                 <div className="w-full h-55 bg-gray-200 overflow-hidden flex items-center justify-center">
                     {article.featuredImage ? (
-                        <img
+                        <Image
                             src={article.featuredImage}
                             alt={article.title}
                             width={800}
                             height={400}
                             className="w-full h-full object-cover"
-                            loading="lazy"
+                            unoptimized
                         />
                     ) : (
                         <ImageIcon

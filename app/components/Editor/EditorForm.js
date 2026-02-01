@@ -176,6 +176,7 @@ export default function EditorForm({ mode = "create", initialData = {} }) {
                                                 width={300}
                                                 height={200}
                                                 className="w-full h-48 object-cover rounded-lg"
+                                                unoptimized
                                             />
                                             <button
                                                 onClick={removeImage}
