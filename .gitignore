@@ -49,3 +49,6 @@ prisma/*.db-journal
 # uploads (user files)
 public/uploads/
 data/uploads/
+
+.env.*
+!.env.example
